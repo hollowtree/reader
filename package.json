@@ -1,8 +1,30 @@
 {
     "main": "main.js",
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "debug": "electron --inspect=5858 ."
     },
+    "configurations": [
+        {
+            "name": "Debug Main Process",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+            "windows": {
+                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+            },
+            "args": [
+                "."
+            ]
+        },
+        {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/index.html"
+        }
+    ],
     "dependencies": {
         "electron": "^2.0.8"
     }
